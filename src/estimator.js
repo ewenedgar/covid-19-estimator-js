@@ -67,9 +67,9 @@ const covid19ImpactEstimator = () => {
     this.casesForVentilatorsByRequestedTime = casesForVentilatorsByRequestedTime;
     this.dollarsInFlight = dollarsInFlight;
   }();
-  const estimate = { impact, severeImpact };
+  // const estimate = { impact, severeImpact };
 
-  return { data, estimate };
+  return { data, impact, severeImpact };
 };
 
 // console.log(covid19ImpactEstimator(data));
