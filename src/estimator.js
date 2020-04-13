@@ -14,24 +14,17 @@ const covid19ImpactEstimator = () => {
     totalHospitalBeds: 1380614
   };
 
-  function days(num) {
-    let day = 1;
+  function days() {
     let numDays;
-
     if (data.periodType === 'weeks') {
-      numDays = Math.floor(7 * num);
-    }
-    if (data.periodType === 'months') {
-      numDays = Math.floor(30 * num);
+      numDays = Math.floor(7 * data.timeToElapse);
+    } else if (data.periodType === 'months') {
+      numDays = Math.floor(30 * data.timeToElapse);
     } else {
-      numDays = num;
+      numDays = data.timeToElapse;
     }
     const rate = Math.floor(numDays / 3);
-    let infectionRate = 1;
-    while (day <= rate) {
-      infectionRate *= 2;
-      day += day;
-    }
+    const infectionRate = 2 ** rate;
     return infectionRate;
   }
 
@@ -41,9 +34,7 @@ const covid19ImpactEstimator = () => {
     const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
     const hospitalBedsByRequestedTime = (Math.floor(severeCasesByRequestedTime - (
       (35 / 100) * data.totalHospitalBeds)));
-    const casesForICUByRequestedTime = (Math.floor(
-      (5 / 100) * infectionsByRequestedTime
-    ));
+    const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
     const casesForVentilatorsByRequestedTime = (Math.floor((2 / 100) * infectionsByRequestedTime));
     const dollarsInFlight = parseFloat((infectionsByRequestedTime * 0.65 * (
       data.region.avgDailyIncomeInUSD) * (days(data.timeToElapse))).toFixed(2));
@@ -76,12 +67,13 @@ const covid19ImpactEstimator = () => {
     this.casesForVentilatorsByRequestedTime = casesForVentilatorsByRequestedTime;
     this.dollarsInFlight = dollarsInFlight;
   }();
-  // const estimate = { impact, severeImpact };
+  const estimate = { impact, severeImpact };
 
-  return { data, impact, severeImpact };
-
-  // return  { data, estimate };
+  return { data, estimate };
 };
 
+// console.log(covid19ImpactEstimator(data));
+
+// const covid19ImpactEstimator = (data) => data;
 
 export default covid19ImpactEstimator;
