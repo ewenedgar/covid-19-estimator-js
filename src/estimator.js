@@ -3,13 +3,13 @@ const covid19ImpactEstimator = (data) => {
   function days() {
     let numDays;
     if (data.periodType === 'weeks') {
-      numDays = Math.trunc(7 * data.timeToElapse);
+      numDays = Math.floor(7 * data.timeToElapse);
     } else if (data.periodType === 'months') {
-      numDays = Math.trunc(30 * data.timeToElapse);
+      numDays = Math.floor(30 * data.timeToElapse);
     } else {
       numDays = data.timeToElapse;
     }
-    const rate = Math.trunc(numDays / 3);
+    const rate = Math.floor(numDays / 3);
     const infectionRate = 2 ** rate;
     return infectionRate;
   }
@@ -17,11 +17,11 @@ const covid19ImpactEstimator = (data) => {
   const impact = new function () {
     const currentlyInfected = data.reportedCases * 10;
     const infectionsByRequestedTime = (days(data.timeToElapse) * data.reportedCases * 10);
-    const severeCasesByRequestedTime = (Math.trunc((15 / 100) * infectionsByRequestedTime));
-    const hospitalBedsByRequestedTime = (Math.trunc((
+    const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
+    const hospitalBedsByRequestedTime = (Math.ceil((
       (35 / 100) * data.totalHospitalBeds)) - severeCasesByRequestedTime);
-    const casesForICUByRequestedTime = (Math.trunc((5 / 100) * infectionsByRequestedTime));
-    const casesForVentilatorsByRequestedTime = (Math.trunc(
+    const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
+    const casesForVentilatorsByRequestedTime = (Math.floor(
       (2) * infectionsByRequestedTime
     ));
     const dollarsInFlight = parseFloat((infectionsByRequestedTime * 0.65 * (
@@ -39,11 +39,11 @@ const covid19ImpactEstimator = (data) => {
   const severeImpact = new function () {
     const currentlyInfected = data.reportedCases * 50;
     const infectionsByRequestedTime = days(data.timeToElapse) * data.reportedCases * 50;
-    const severeCasesByRequestedTime = (Math.trunc((15 / 100) * infectionsByRequestedTime));
-    const hospitalBedsByRequestedTime = (Math.trunc((
+    const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
+    const hospitalBedsByRequestedTime = (Math.ceil((
       (35 / 100) * data.totalHospitalBeds)) - severeCasesByRequestedTime);
-    const casesForICUByRequestedTime = (Math.trunc((5 / 100) * infectionsByRequestedTime));
-    const casesForVentilatorsByRequestedTime = (Math.trunc(
+    const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
+    const casesForVentilatorsByRequestedTime = (Math.floor(
       (2) * infectionsByRequestedTime
     ));
     const dollarsInFlight = parseFloat((infectionsByRequestedTime * 0.65 * (
