@@ -35,12 +35,13 @@ const covid19ImpactEstimator = () => {
     // const hospitalBedsByRequestedTime = (Math.floor(severeCasesByRequestedTime - (
     //   (35 / 100) * data.totalHospitalBeds)));
     // const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
-    // const casesForVentilatorsByRequestedTime = (Math.floor((2 / 100) * infectionsByRequestedTime));
+    // const casesForVentilatorsByRequestedTime = (Math.floor(
+    // (2 / 100) * infectionsByRequestedTime));
     // const dollarsInFlight = parseFloat((infectionsByRequestedTime * 0.65 * (
     //   data.region.avgDailyIncomeInUSD) * (days(data.timeToElapse))).toFixed(2));
 
-     this.currentlyInfected = currentlyInfected;
-     this.infectionsByRequestedTime = infectionsByRequestedTime;
+    this.currentlyInfected = currentlyInfected;
+    this.infectionsByRequestedTime = infectionsByRequestedTime;
     // this.severeCasesByRequestedTime = severeCasesByRequestedTime;
     // this.hospitalBedsByRequestedTime = hospitalBedsByRequestedTime;
     // this.casesForICUByRequestedTime = casesForICUByRequestedTime;
@@ -50,7 +51,7 @@ const covid19ImpactEstimator = () => {
 
   const severeImpact = new function () {
     const currentlyInfected = data.reportedCases * 50;
-   const infectionsByRequestedTime = days(data.timeToElapse) * data.reportedCases * 50;
+    const infectionsByRequestedTime = days(data.timeToElapse) * data.reportedCases * 50;
     // const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
     // const hospitalBedsByRequestedTime = (Math.floor(severeCasesByRequestedTime - (
     //   (35 / 100) * data.totalHospitalBeds)));
@@ -59,8 +60,8 @@ const covid19ImpactEstimator = () => {
     // const dollarsInFlight = parseFloat((infectionsByRequestedTime * 0.65 * (
     //   data.region.avgDailyIncomeInUSD) * (days(data.timeToElapse))).toFixed(2));
 
-     this.currentlyInfected = currentlyInfected;
-     this.infectionsByRequestedTime = infectionsByRequestedTime;
+    this.currentlyInfected = currentlyInfected;
+    this.infectionsByRequestedTime = infectionsByRequestedTime;
     // this.severeCasesByRequestedTime = severeCasesByRequestedTime;
     // this.hospitalBedsByRequestedTime = hospitalBedsByRequestedTime;
     // this.casesForICUByRequestedTime = casesForICUByRequestedTime;
