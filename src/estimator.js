@@ -18,8 +18,8 @@ const covid19ImpactEstimator = (data) => {
     const currentlyInfected = data.reportedCases * 10;
     const infectionsByRequestedTime = (days(data.timeToElapse) * data.reportedCases * 10);
     const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
-    const hospitalBedsByRequestedTime = (Math.floor(severeCasesByRequestedTime - (
-      (35 / 100) * data.totalHospitalBeds)));
+    const hospitalBedsByRequestedTime = (Math.floor((
+      (35 / 100) * data.totalHospitalBeds)) - severeCasesByRequestedTime);
     const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
     const casesForVentilatorsByRequestedTime = (Math.floor(
       (2 / 100) * infectionsByRequestedTime
@@ -40,8 +40,8 @@ const covid19ImpactEstimator = (data) => {
     const currentlyInfected = data.reportedCases * 50;
     const infectionsByRequestedTime = days(data.timeToElapse) * data.reportedCases * 50;
     const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
-    const hospitalBedsByRequestedTime = (Math.floor(severeCasesByRequestedTime - (
-      (35 / 100) * data.totalHospitalBeds)));
+    const hospitalBedsByRequestedTime = (Math.floor((
+      (35 / 100) * data.totalHospitalBeds)) - severeCasesByRequestedTime);
     const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
     const casesForVentilatorsByRequestedTime = (Math.floor((0.2) * infectionsByRequestedTime));
     const dollarsInFlight = parseFloat((infectionsByRequestedTime * 0.65 * (
