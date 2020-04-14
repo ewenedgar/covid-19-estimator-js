@@ -13,7 +13,7 @@ const covid19ImpactEstimator = (data) => {
     const infectionRate = 2 ** rate;
     return infectionRate;
   }
-  function ndays() {
+  function Days() {
     let numDays;
     if (data.periodType === 'weeks') {
       numDays = Math.floor(7 * data.timeToElapse);
@@ -33,9 +33,9 @@ const covid19ImpactEstimator = (data) => {
       (35 / 100) * data.totalHospitalBeds)) - severeCasesByRequestedTime);
     const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
     const casesForVentilatorsByRequestedTime = (Math.floor((0.02) * infectionsByRequestedTime));
-    const dollarsInFlight = parseFloat((
+    const dollarsInFlight = Number(((
       infectionsByRequestedTime * data.region.avgDailyIncomePopulation * (
-        data.region.avgDailyIncomeInUSD) * (ndays(data.timeToElapse))).toFixed(2));
+        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed(2));
 
     this.currentlyInfected = currentlyInfected;
     this.infectionsByRequestedTime = infectionsByRequestedTime;
@@ -54,9 +54,9 @@ const covid19ImpactEstimator = (data) => {
       (35 / 100) * data.totalHospitalBeds)) - severeCasesByRequestedTime);
     const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
     const casesForVentilatorsByRequestedTime = (Math.floor((0.02) * infectionsByRequestedTime));
-    const dollarsInFlight = parseFloat((
+    const dollarsInFlight = Number(((
       infectionsByRequestedTime * data.region.avgDailyIncomePopulation * (
-        data.region.avgDailyIncomeInUSD) * (ndays(data.timeToElapse))).toFixed(2));
+        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed(2));
 
     this.currentlyInfected = currentlyInfected;
     this.infectionsByRequestedTime = infectionsByRequestedTime;
