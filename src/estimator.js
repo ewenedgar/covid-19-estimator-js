@@ -22,7 +22,7 @@ const covid19ImpactEstimator = (data) => {
       (35 / 100) * data.totalHospitalBeds)) - severeCasesByRequestedTime);
     const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
     const casesForVentilatorsByRequestedTime = (Math.floor(
-      (2 / 100) * (days(data.timeToElapse) * data.reportedCases * 10)
+      (2 / 100) * infectionsByRequestedTime
     ));
     const dollarsInFlight = parseFloat((infectionsByRequestedTime * 0.65 * (
       data.region.avgDailyIncomeInUSD) * (days(data.timeToElapse))).toFixed(2));
