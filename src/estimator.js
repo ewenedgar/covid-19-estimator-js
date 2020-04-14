@@ -35,7 +35,7 @@ const covid19ImpactEstimator = (data) => {
     const casesForVentilatorsByRequestedTime = (Math.floor((0.02) * infectionsByRequestedTime));
     const dollarsInFlight = Number(((
       infectionsByRequestedTime * data.region.avgDailyIncomePopulation * (
-        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed(2));
+        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed(0));
 
     this.currentlyInfected = currentlyInfected;
     this.infectionsByRequestedTime = infectionsByRequestedTime;
@@ -56,7 +56,7 @@ const covid19ImpactEstimator = (data) => {
     const casesForVentilatorsByRequestedTime = (Math.floor((0.02) * infectionsByRequestedTime));
     const dollarsInFlight = Number(((
       infectionsByRequestedTime * data.region.avgDailyIncomePopulation * (
-        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed(2));
+        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed(0));
 
     this.currentlyInfected = currentlyInfected;
     this.infectionsByRequestedTime = infectionsByRequestedTime;
