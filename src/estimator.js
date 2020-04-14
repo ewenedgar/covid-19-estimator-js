@@ -28,9 +28,10 @@ const covid19ImpactEstimator = (data) => {
     let numDays = Math.trunc((2 / 100) * (
       days(data.timeToElapse) * data.reportedCases * 10));
     if (data.periodType === 'weeks' || data.periodType === 'months') {
-      numDays -= 1;
+      numDays -= 0;
     } else {
-      numDays += 0;
+      numDays = Math.trunc((2 / 100) * (
+        days(data.timeToElapse) * data.reportedCases * 10));
     }
     return numDays;
   }
