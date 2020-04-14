@@ -29,13 +29,13 @@ const covid19ImpactEstimator = (data) => {
     const currentlyInfected = data.reportedCases * 10;
     const infectionsByRequestedTime = (days(data.timeToElapse) * data.reportedCases * 10);
     const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
-    const hospitalBedsByRequestedTime = Number(Math.trunc((
-      (35 / 100) * data.totalHospitalBeds) - severeCasesByRequestedTime));
-    const casesForICUByRequestedTime = (Math.floor((5 / 100)) * infectionsByRequestedTime);
-    const casesForVentilatorsByRequestedTime = (Math.floor((0.02)) * infectionsByRequestedTime);
+    const hospitalBedsByRequestedTime = (Math.trunc((
+      (35 / 100) * data.totalHospitalBeds)) - severeCasesByRequestedTime);
+    const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
+    const casesForVentilatorsByRequestedTime = (Math.floor((0.02) * infectionsByRequestedTime));
     const dollarsInFlight = Number(((
       infectionsByRequestedTime * data.region.avgDailyIncomePopulation * (
-        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed());
+        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed(2));
 
     this.currentlyInfected = currentlyInfected;
     this.infectionsByRequestedTime = infectionsByRequestedTime;
@@ -50,13 +50,13 @@ const covid19ImpactEstimator = (data) => {
     const currentlyInfected = data.reportedCases * 50;
     const infectionsByRequestedTime = days(data.timeToElapse) * data.reportedCases * 50;
     const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
-    const hospitalBedsByRequestedTime = Number(Math.trunc((
-      (35 / 100) * data.totalHospitalBeds) - severeCasesByRequestedTime));
+    const hospitalBedsByRequestedTime = (Math.trunc((
+      (35 / 100) * data.totalHospitalBeds)) - severeCasesByRequestedTime);
     const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
     const casesForVentilatorsByRequestedTime = (Math.floor((0.02) * infectionsByRequestedTime));
     const dollarsInFlight = Number(((
       infectionsByRequestedTime * data.region.avgDailyIncomePopulation * (
-        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed());
+        data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed(2));
 
     this.currentlyInfected = currentlyInfected;
     this.infectionsByRequestedTime = infectionsByRequestedTime;
