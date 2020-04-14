@@ -31,12 +31,8 @@ const covid19ImpactEstimator = (data) => {
     const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
     const hospitalBedsByRequestedTime = (Math.trunc((
       (35 / 100) * data.totalHospitalBeds) - severeCasesByRequestedTime));
-    const casesForICUByRequestedTime = (Math.floor(
-      (5 / 100) * infectionsByRequestedTime
-    ) - 1);
-    const casesForVentilatorsByRequestedTime = (Math.trunc(
-      (0.02) * infectionsByRequestedTime
-    ) - 1);
+    const casesForICUByRequestedTime = (Math.floor((5 / 100) * infectionsByRequestedTime));
+    const casesForVentilatorsByRequestedTime = (Math.trunc((0.02) * infectionsByRequestedTime));
     const dollarsInFlight = Math.trunc(((
       infectionsByRequestedTime * data.region.avgDailyIncomePopulation * (
         data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse))).toFixed());
@@ -56,12 +52,10 @@ const covid19ImpactEstimator = (data) => {
     const severeCasesByRequestedTime = (Math.floor((15 / 100) * infectionsByRequestedTime));
     const hospitalBedsByRequestedTime = (Math.trunc((
       (35 / 100) * data.totalHospitalBeds) - severeCasesByRequestedTime));
-    const casesForICUByRequestedTime = Number(Math.floor(
-      (5 / 100) * infectionsByRequestedTime
-    ) - 1);
+    const casesForICUByRequestedTime = Number(Math.floor((5 / 100) * infectionsByRequestedTime));
     const casesForVentilatorsByRequestedTime = Number(Math.trunc(
       (0.02) * infectionsByRequestedTime
-    ) - 1);
+    ));
     const dollarsInFlight = Math.trunc((
       infectionsByRequestedTime * data.region.avgDailyIncomePopulation * (
         data.region.avgDailyIncomeInUSD)) / (Days(data.timeToElapse)));
