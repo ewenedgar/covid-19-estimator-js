@@ -24,7 +24,7 @@ const covid19ImpactEstimator = (data) => {
     }
     return numDays;
   }
-  function casesForVentilatorsByRequestedTim() {
+  /*  function casesForVentilatorsByRequestedTim() {
     let numDays = Math.trunc((2 / 100) * (
       days(data.timeToElapse) * data.reportedCases * 10));
     if (data.periodType === 'weeks' || data.periodType === 'months') {
@@ -33,7 +33,7 @@ const covid19ImpactEstimator = (data) => {
       numDays += 0;
     }
     return numDays;
-  }
+  } */
 
   const impact = new function () {
     const currentlyInfected = data.reportedCases * 10;
